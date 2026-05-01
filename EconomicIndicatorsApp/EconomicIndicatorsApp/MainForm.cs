@@ -29,6 +29,12 @@ namespace EconomicIndicatorsApp
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+            string dataDir = Path.Combine(Application.StartupPath, "Data");
+            if (Directory.Exists(dataDir))
+                ofd.InitialDirectory = dataDir;
+            else
+                ofd.InitialDirectory = Application.StartupPath; //на случай если Data нет
+
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 try
