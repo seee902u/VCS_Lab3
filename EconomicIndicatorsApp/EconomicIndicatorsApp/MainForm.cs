@@ -196,7 +196,7 @@ namespace EconomicIndicatorsApp
         {
             try
             {
-                string relativePath = @"inflation_data.xlsx";
+                string relativePath = @"Data\inflation_data.xlsx";
                 string fullPath = Path.Combine(Application.StartupPath, relativePath);
 
                 if (!File.Exists(fullPath))
