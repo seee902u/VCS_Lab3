@@ -179,7 +179,7 @@ namespace EconomicIndicatorsApp
             chartRoads.ChartAreas[0].AxisY.ScaleView.ZoomReset();
         }
 
-        //вкладка "ИНФЛЯЦИЯ" (сделает ника) 
+        //вкладка "ИНФЛЯЦИЯ" (сделает ника)
         private void btnLoadInflation_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Загрузка инфляции пока не реализована.");
