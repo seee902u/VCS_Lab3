@@ -196,7 +196,7 @@ namespace EconomicIndicatorsApp
         {
             try
             {
-                string relativePath = @"inflation_data.xlsx";
+                string relativePath = @"Data\inflation_data.xlsx";
                 string fullPath = Path.Combine(Application.StartupPath, relativePath);
 
                 if (!File.Exists(fullPath))
@@ -247,9 +247,9 @@ namespace EconomicIndicatorsApp
         // Перерисовка графика
         private void UpdateChart(double[] history, double[] forecast)
         {
-            Chart.Series.Clear();
-            Chart.ChartAreas[0].AxisX.Title = "Год";
-            Chart.ChartAreas[0].AxisY.Title = "Инфляция, %";
+            Chart1.Series.Clear();
+            Chart1.ChartAreas[0].AxisX.Title = "Год";
+            Chart1.ChartAreas[0].AxisY.Title = "Инфляция, %";
 
             // Серия исторических данных
             var historySeries = new Series("История")
@@ -274,8 +274,8 @@ namespace EconomicIndicatorsApp
             // Добавим точку-связку (последнее историческое значение, чтобы линия не висела в воздухе)
             forecastSeries.Points.Insert(0, new DataPoint(history.Length, history.Last()));
 
-            Chart.Series.Add(historySeries);
-            Chart.Series.Add(forecastSeries);
+            Chart1.Series.Add(historySeries);
+            Chart1.Series.Add(forecastSeries);
         }
 
         // Изменение текущей цены – пересчёт будущей стоимости
@@ -290,12 +290,9 @@ namespace EconomicIndicatorsApp
             if (_forecastedInflation == null)
                 return;
 
-            double currentPrice = (double)CurrentPriceInputBox.Value;
+            double currentPrice = (double)InputCurrentPriceBox.Value;
             double futurePrice = PricePredictor.PredictFuturePrice(currentPrice, _forecastedInflation);
             NewPriceOutputBox.Text = $"Цена через {_forecastedInflation.Length} лет: {futurePrice:F2}";
         }
-
-
     }
-}
 }

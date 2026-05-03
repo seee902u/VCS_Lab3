@@ -51,7 +51,7 @@
             this.txtRoadsN = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.InputCurrentPriceBox = new System.Windows.Forms.NumericUpDown();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.Chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.NewPriceOutputBox = new System.Windows.Forms.RichTextBox();
             this.dgvInf = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
@@ -61,7 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoads)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InputCurrentPriceBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInf)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,7 +81,7 @@
             // 
             this.tabInflation.Controls.Add(this.dgvInf);
             this.tabInflation.Controls.Add(this.NewPriceOutputBox);
-            this.tabInflation.Controls.Add(this.chart1);
+            this.tabInflation.Controls.Add(this.Chart1);
             this.tabInflation.Controls.Add(this.InputCurrentPriceBox);
             this.tabInflation.Controls.Add(this.label1);
             this.tabInflation.Controls.Add(this.btnPredictInflation);
@@ -319,21 +319,21 @@
             this.InputCurrentPriceBox.Size = new System.Drawing.Size(168, 20);
             this.InputCurrentPriceBox.TabIndex = 7;
             // 
-            // chart1
+            // Chart1
             // 
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            this.Chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(321, 149);
-            this.chart1.Name = "chart1";
+            this.Chart1.Legends.Add(legend1);
+            this.Chart1.Location = new System.Drawing.Point(321, 149);
+            this.Chart1.Name = "Chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(303, 301);
-            this.chart1.TabIndex = 8;
-            this.chart1.Text = "chart1";
+            this.Chart1.Series.Add(series1);
+            this.Chart1.Size = new System.Drawing.Size(303, 301);
+            this.Chart1.TabIndex = 8;
+            this.Chart1.Text = "chart1";
             // 
             // NewPriceOutputBox
             // 
@@ -369,7 +369,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InputCurrentPriceBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInf)).EndInit();
             this.ResumeLayout(false);
 
@@ -398,7 +398,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRoads;
         private System.Windows.Forms.DataGridView dgvInf;
         private System.Windows.Forms.RichTextBox NewPriceOutputBox;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Chart1;
         private System.Windows.Forms.NumericUpDown InputCurrentPriceBox;
         private System.Windows.Forms.Label label1;
     }
