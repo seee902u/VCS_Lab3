@@ -1,23 +1,16 @@
-﻿using EconomicIndicatorsApp.Implementations;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using EconomicIndicatorsApp.Implementations;
-using System.Data;
 
 namespace EconomicIndicatorsApp
 {
     public partial class MainForm : Form
     {
         private List<RoadData> roadDataList; //загруженные данные по дорогам
-        private readonly ExcelService _excelService = new ExcelService();
-        private readonly InflationDataProvider _dataProvider;
-        private readonly MovingAverageForecaster _forecaster;
-        private double[] _forecastedInflation;   // Прогнозные годовые темпы инфляции
 
         public MainForm()
         {
@@ -28,12 +21,6 @@ namespace EconomicIndicatorsApp
 
             // Настройка начальных свойств DataGridView
             dgvRoads.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            // Путь к файлу с данными относительно папки программы
-            string dataPath = Path.Combine(Application.StartupPath, "Data.xlsx");
-            _dataProvider = new InflationDataProvider(dataPath);
-            _forecaster = new MovingAverageForecaster();
-
         }
 
         //вкладка "ДОРОГИ" 
@@ -195,103 +182,12 @@ namespace EconomicIndicatorsApp
         //вкладка "ИНФЛЯЦИЯ" (сделает ника)
         private void btnLoadInflation_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string relativePath = @"Data.xlsx";
-                string fullPath = Path.Combine(Application.StartupPath, relativePath);
-
-                if (!File.Exists(fullPath))
-                {
-                    MessageBox.Show($"Файл не найден: {fullPath}");
-                    return;
-                }
-
-                DataTable dt = _excelService.ReadFirstSheet(fullPath);
-                dgvInf.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка: {ex.Message}");
-            }
-
+            MessageBox.Show("Загрузка инфляции пока не реализована.");
         }
 
         private void btnPredictInflation_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtInflationN.Text, out int N) || N <= 0)
-            {
-                MessageBox.Show("Введите положительное целое число лет.");
-                return;
-            }
-
-            try
-            {
-                // Получение данных
-                double[] history = _dataProvider.ReadInflationRates();
-
-                // Расчёт прогноза
-                _forecastedInflation = _forecaster.Forecast(history, N, windowSize: 3);
-
-                // Обновление графика
-                UpdateChart(history, _forecastedInflation);
-
-                // Пересчёт будущей цены для текущего значения NumericUpDown
-                UpdateFuturePrice();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка: {ex.Message}");
-            }
-        }
-        // Перерисовка графика
-        private void UpdateChart(double[] history, double[] forecast)
-        {
-            Chart.Series.Clear();
-            Chart.ChartAreas[0].AxisX.Title = "Год";
-            Chart.ChartAreas[0].AxisY.Title = "Инфляция, %";
-
-            // Серия исторических данных
-            var historySeries = new Series("История")
-            {
-                ChartType = SeriesChartType.Column,
-                Color = Color.SteelBlue
-            };
-            for (int i = 0; i < history.Length; i++)
-                historySeries.Points.AddXY(i + 1, history[i]);
-
-            // Серия прогноза
-            var forecastSeries = new Series("Прогноз")
-            {
-                ChartType = SeriesChartType.Line,
-                Color = Color.OrangeRed,
-                BorderWidth = 2
-            };
-            int startYear = history.Length; // Последний исторический год
-            for (int i = 0; i < forecast.Length; i++)
-                forecastSeries.Points.AddXY(startYear + i + 1, forecast[i]);
-
-            // Добавим точку-связку (последнее историческое значение, чтобы линия не висела в воздухе)
-            forecastSeries.Points.Insert(0, new DataPoint(history.Length, history.Last()));
-
-            Chart.Series.Add(historySeries);
-            Chart.Series.Add(forecastSeries);
-        }
-
-        // Изменение текущей цены – пересчёт будущей стоимости
-        private void CurrentPriceInputBox_ValueChanged(object sender, EventArgs e)
-        {
-            UpdateFuturePrice();
-        }
-
-        // Обновление текста в RichTextBox с будущей ценой
-        private void UpdateFuturePrice()
-        {
-            if (_forecastedInflation == null)
-                return;
-
-            double currentPrice = (double)CurrentPriceInputBox.Value;
-            double futurePrice = PricePredictor.PredictFuturePrice(currentPrice, _forecastedInflation);
-            NewPriceOutputBox.Text = $"Цена через {_forecastedInflation.Length} лет: {futurePrice:F2}";
+            MessageBox.Show("Прогноз инфляции пока не реализован.");
         }
     }
 }
