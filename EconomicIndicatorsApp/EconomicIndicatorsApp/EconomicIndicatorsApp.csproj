@@ -47,6 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\ExcelService.cs" />
+    <Compile Include="Implementations\InflationDataProvider.cs" />
+    <Compile Include="Implementations\MovingAverageForecaster.cs" />
+    <Compile Include="Implementations\PricePredictor.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
