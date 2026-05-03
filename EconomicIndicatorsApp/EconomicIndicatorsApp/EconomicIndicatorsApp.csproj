@@ -110,6 +110,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Data\inflation_data.xlsx" />
     <None Include="Data\road_data.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
