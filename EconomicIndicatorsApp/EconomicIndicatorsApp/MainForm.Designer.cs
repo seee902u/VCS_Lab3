@@ -24,35 +24,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabInflation = new System.Windows.Forms.TabPage();
             this.btnPredictInflation = new System.Windows.Forms.Button();
             this.txtInflationN = new System.Windows.Forms.TextBox();
             this.lblInflationN = new System.Windows.Forms.Label();
-            this.lblInflationTable = new System.Windows.Forms.Label();
             this.btnLoadInflation = new System.Windows.Forms.Button();
             this.tabRoads = new System.Windows.Forms.TabPage();
-            this.btnPredictRoads = new System.Windows.Forms.Button();
-            this.txtRoadsN = new System.Windows.Forms.TextBox();
-            this.lblRoadsN = new System.Windows.Forms.Label();
-            this.btnLoadRoads = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.comboSubjectForForecast = new System.Windows.Forms.ComboBox();
-            this.lblSubject = new System.Windows.Forms.Label();
-            this.btnAnalyze = new System.Windows.Forms.Button();
-            this.btnExportChart = new System.Windows.Forms.Button();
-            this.btnResetZoom = new System.Windows.Forms.Button();
-            this.dgvRoads = new System.Windows.Forms.DataGridView();
             this.chartRoads = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.dgvRoads = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnResetZoom = new System.Windows.Forms.Button();
+            this.btnExportChart = new System.Windows.Forms.Button();
+            this.btnAnalyze = new System.Windows.Forms.Button();
+            this.lblSubject = new System.Windows.Forms.Label();
+            this.comboSubjectForForecast = new System.Windows.Forms.ComboBox();
+            this.btnLoadRoads = new System.Windows.Forms.Button();
+            this.btnPredictRoads = new System.Windows.Forms.Button();
+            this.lblRoadsN = new System.Windows.Forms.Label();
+            this.txtRoadsN = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.CurrentPriceInputBox = new System.Windows.Forms.NumericUpDown();
+            this.NewPriceOutputBox = new System.Windows.Forms.RichTextBox();
+            this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.dgvInf = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabInflation.SuspendLayout();
             this.tabRoads.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRoads)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartRoads)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRoads)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentPriceInputBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Chart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInf)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -61,31 +71,38 @@
             this.tabControl1.Controls.Add(this.tabRoads);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(977, 762);
+            this.tabControl1.Size = new System.Drawing.Size(651, 495);
             this.tabControl1.TabIndex = 0;
             // 
             // tabInflation
             // 
+            this.tabInflation.Controls.Add(this.dgvInf);
+            this.tabInflation.Controls.Add(this.Chart);
+            this.tabInflation.Controls.Add(this.NewPriceOutputBox);
+            this.tabInflation.Controls.Add(this.CurrentPriceInputBox);
+            this.tabInflation.Controls.Add(this.label1);
             this.tabInflation.Controls.Add(this.btnPredictInflation);
             this.tabInflation.Controls.Add(this.txtInflationN);
             this.tabInflation.Controls.Add(this.lblInflationN);
-            this.tabInflation.Controls.Add(this.lblInflationTable);
             this.tabInflation.Controls.Add(this.btnLoadInflation);
-            this.tabInflation.Location = new System.Drawing.Point(4, 29);
+            this.tabInflation.Location = new System.Drawing.Point(4, 22);
+            this.tabInflation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabInflation.Name = "tabInflation";
-            this.tabInflation.Padding = new System.Windows.Forms.Padding(3);
-            this.tabInflation.Size = new System.Drawing.Size(920, 561);
+            this.tabInflation.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabInflation.Size = new System.Drawing.Size(643, 469);
             this.tabInflation.TabIndex = 0;
             this.tabInflation.Text = "Инфляция";
             this.tabInflation.UseVisualStyleBackColor = true;
             // 
             // btnPredictInflation
             // 
-            this.btnPredictInflation.Location = new System.Drawing.Point(255, 59);
+            this.btnPredictInflation.Location = new System.Drawing.Point(170, 38);
+            this.btnPredictInflation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPredictInflation.Name = "btnPredictInflation";
-            this.btnPredictInflation.Size = new System.Drawing.Size(194, 85);
+            this.btnPredictInflation.Size = new System.Drawing.Size(129, 55);
             this.btnPredictInflation.TabIndex = 5;
             this.btnPredictInflation.Text = "Рассчитать прогноз и стоимость товара";
             this.btnPredictInflation.UseVisualStyleBackColor = true;
@@ -93,35 +110,28 @@
             // 
             // txtInflationN
             // 
-            this.txtInflationN.Location = new System.Drawing.Point(229, 175);
+            this.txtInflationN.Location = new System.Drawing.Point(153, 114);
+            this.txtInflationN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtInflationN.Name = "txtInflationN";
-            this.txtInflationN.Size = new System.Drawing.Size(220, 26);
+            this.txtInflationN.Size = new System.Drawing.Size(148, 20);
             this.txtInflationN.TabIndex = 4;
             // 
             // lblInflationN
             // 
             this.lblInflationN.AutoSize = true;
-            this.lblInflationN.Location = new System.Drawing.Point(35, 175);
+            this.lblInflationN.Location = new System.Drawing.Point(23, 114);
+            this.lblInflationN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInflationN.Name = "lblInflationN";
-            this.lblInflationN.Size = new System.Drawing.Size(187, 20);
+            this.lblInflationN.Size = new System.Drawing.Size(124, 13);
             this.lblInflationN.TabIndex = 3;
             this.lblInflationN.Text = "Период прогноза (лет):";
             // 
-            // lblInflationTable
-            // 
-            this.lblInflationTable.AutoSize = true;
-            this.lblInflationTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblInflationTable.Location = new System.Drawing.Point(30, 249);
-            this.lblInflationTable.Name = "lblInflationTable";
-            this.lblInflationTable.Size = new System.Drawing.Size(574, 29);
-            this.lblInflationTable.TabIndex = 2;
-            this.lblInflationTable.Text = "Таблица и данные появятся после загрузки ";
-            // 
             // btnLoadInflation
             // 
-            this.btnLoadInflation.Location = new System.Drawing.Point(35, 59);
+            this.btnLoadInflation.Location = new System.Drawing.Point(23, 38);
+            this.btnLoadInflation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLoadInflation.Name = "btnLoadInflation";
-            this.btnLoadInflation.Size = new System.Drawing.Size(200, 85);
+            this.btnLoadInflation.Size = new System.Drawing.Size(133, 55);
             this.btnLoadInflation.TabIndex = 0;
             this.btnLoadInflation.Text = "Загрузить данные об инфляции";
             this.btnLoadInflation.UseVisualStyleBackColor = true;
@@ -132,50 +142,50 @@
             this.tabRoads.Controls.Add(this.chartRoads);
             this.tabRoads.Controls.Add(this.dgvRoads);
             this.tabRoads.Controls.Add(this.panel1);
-            this.tabRoads.Location = new System.Drawing.Point(4, 29);
+            this.tabRoads.Location = new System.Drawing.Point(4, 22);
+            this.tabRoads.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabRoads.Name = "tabRoads";
-            this.tabRoads.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRoads.Size = new System.Drawing.Size(969, 729);
+            this.tabRoads.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabRoads.Size = new System.Drawing.Size(643, 469);
             this.tabRoads.TabIndex = 1;
             this.tabRoads.Text = "Доля плохих дорог";
             this.tabRoads.UseVisualStyleBackColor = true;
             // 
-            // btnPredictRoads
+            // chartRoads
             // 
-            this.btnPredictRoads.Location = new System.Drawing.Point(235, 21);
-            this.btnPredictRoads.Name = "btnPredictRoads";
-            this.btnPredictRoads.Size = new System.Drawing.Size(147, 80);
-            this.btnPredictRoads.TabIndex = 4;
-            this.btnPredictRoads.Text = "Рассчитать прогноз";
-            this.btnPredictRoads.UseVisualStyleBackColor = true;
-            this.btnPredictRoads.Click += new System.EventHandler(this.btnPredictRoads_Click);
+            chartArea4.AxisX.Interval = 1D;
+            chartArea4.AxisX.Title = "Год";
+            chartArea4.AxisY.Title = "% плохих дорог";
+            chartArea4.CursorX.IsUserEnabled = true;
+            chartArea4.CursorX.IsUserSelectionEnabled = true;
+            chartArea4.CursorY.IsUserEnabled = true;
+            chartArea4.Name = "ChartArea1";
+            this.chartRoads.ChartAreas.Add(chartArea4);
+            this.chartRoads.Dock = System.Windows.Forms.DockStyle.Top;
+            legend4.Name = "Legend1";
+            this.chartRoads.Legends.Add(legend4);
+            this.chartRoads.Location = new System.Drawing.Point(2, 252);
+            this.chartRoads.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chartRoads.Name = "chartRoads";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartRoads.Series.Add(series4);
+            this.chartRoads.Size = new System.Drawing.Size(639, 222);
+            this.chartRoads.TabIndex = 7;
+            this.chartRoads.Text = "chart1";
             // 
-            // txtRoadsN
+            // dgvRoads
             // 
-            this.txtRoadsN.Location = new System.Drawing.Point(235, 114);
-            this.txtRoadsN.Name = "txtRoadsN";
-            this.txtRoadsN.Size = new System.Drawing.Size(147, 26);
-            this.txtRoadsN.TabIndex = 3;
-            // 
-            // lblRoadsN
-            // 
-            this.lblRoadsN.AutoSize = true;
-            this.lblRoadsN.Location = new System.Drawing.Point(12, 117);
-            this.lblRoadsN.Name = "lblRoadsN";
-            this.lblRoadsN.Size = new System.Drawing.Size(217, 20);
-            this.lblRoadsN.TabIndex = 2;
-            this.lblRoadsN.Text = "Период сглаживания (лет):";
-            // 
-            // btnLoadRoads
-            // 
-            this.btnLoadRoads.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnLoadRoads.Location = new System.Drawing.Point(16, 21);
-            this.btnLoadRoads.Name = "btnLoadRoads";
-            this.btnLoadRoads.Size = new System.Drawing.Size(213, 80);
-            this.btnLoadRoads.TabIndex = 0;
-            this.btnLoadRoads.Text = "Загрузить данные о дорогах";
-            this.btnLoadRoads.UseVisualStyleBackColor = true;
-            this.btnLoadRoads.Click += new System.EventHandler(this.btnLoadRoads_Click);
+            this.dgvRoads.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRoads.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvRoads.Location = new System.Drawing.Point(2, 100);
+            this.dgvRoads.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvRoads.Name = "dgvRoads";
+            this.dgvRoads.RowHeadersWidth = 62;
+            this.dgvRoads.RowTemplate.Height = 28;
+            this.dgvRoads.Size = new System.Drawing.Size(639, 152);
+            this.dgvRoads.TabIndex = 6;
             // 
             // panel1
             // 
@@ -189,108 +199,179 @@
             this.panel1.Controls.Add(this.lblRoadsN);
             this.panel1.Controls.Add(this.txtRoadsN);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(963, 150);
+            this.panel1.Size = new System.Drawing.Size(639, 98);
             this.panel1.TabIndex = 5;
-            // 
-            // comboSubjectForForecast
-            // 
-            this.comboSubjectForForecast.FormattingEnabled = true;
-            this.comboSubjectForForecast.Location = new System.Drawing.Point(602, 114);
-            this.comboSubjectForForecast.Name = "comboSubjectForForecast";
-            this.comboSubjectForForecast.Size = new System.Drawing.Size(180, 28);
-            this.comboSubjectForForecast.TabIndex = 5;
-            // 
-            // lblSubject
-            // 
-            this.lblSubject.AutoSize = true;
-            this.lblSubject.Location = new System.Drawing.Point(412, 120);
-            this.lblSubject.Name = "lblSubject";
-            this.lblSubject.Size = new System.Drawing.Size(184, 20);
-            this.lblSubject.TabIndex = 6;
-            this.lblSubject.Text = "Субъект для прогноза:";
-            // 
-            // btnAnalyze
-            // 
-            this.btnAnalyze.Location = new System.Drawing.Point(416, 21);
-            this.btnAnalyze.Name = "btnAnalyze";
-            this.btnAnalyze.Size = new System.Drawing.Size(180, 80);
-            this.btnAnalyze.TabIndex = 7;
-            this.btnAnalyze.Text = "Анализ субъектов ";
-            this.btnAnalyze.UseVisualStyleBackColor = true;
-            this.btnAnalyze.Click += new System.EventHandler(this.btnAnalyze_Click);
-            // 
-            // btnExportChart
-            // 
-            this.btnExportChart.Location = new System.Drawing.Point(602, 21);
-            this.btnExportChart.Name = "btnExportChart";
-            this.btnExportChart.Size = new System.Drawing.Size(180, 80);
-            this.btnExportChart.TabIndex = 8;
-            this.btnExportChart.Text = "Экспорт графика";
-            this.btnExportChart.UseVisualStyleBackColor = true;
-            this.btnExportChart.Click += new System.EventHandler(this.btnExportChart_Click);
             // 
             // btnResetZoom
             // 
-            this.btnResetZoom.Location = new System.Drawing.Point(807, 21);
+            this.btnResetZoom.Location = new System.Drawing.Point(538, 14);
+            this.btnResetZoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnResetZoom.Name = "btnResetZoom";
-            this.btnResetZoom.Size = new System.Drawing.Size(118, 116);
+            this.btnResetZoom.Size = new System.Drawing.Size(79, 75);
             this.btnResetZoom.TabIndex = 9;
             this.btnResetZoom.Text = "Сброс масштаба";
             this.btnResetZoom.UseVisualStyleBackColor = true;
             this.btnResetZoom.Click += new System.EventHandler(this.btnResetZoom_Click);
             // 
-            // dgvRoads
+            // btnExportChart
             // 
-            this.dgvRoads.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRoads.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgvRoads.Location = new System.Drawing.Point(3, 153);
-            this.dgvRoads.Name = "dgvRoads";
-            this.dgvRoads.RowHeadersWidth = 62;
-            this.dgvRoads.RowTemplate.Height = 28;
-            this.dgvRoads.Size = new System.Drawing.Size(963, 234);
-            this.dgvRoads.TabIndex = 6;
+            this.btnExportChart.Location = new System.Drawing.Point(401, 14);
+            this.btnExportChart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExportChart.Name = "btnExportChart";
+            this.btnExportChart.Size = new System.Drawing.Size(120, 52);
+            this.btnExportChart.TabIndex = 8;
+            this.btnExportChart.Text = "Экспорт графика";
+            this.btnExportChart.UseVisualStyleBackColor = true;
+            this.btnExportChart.Click += new System.EventHandler(this.btnExportChart_Click);
             // 
-            // chartRoads
+            // btnAnalyze
             // 
-            chartArea2.AxisX.Interval = 1D;
-            chartArea2.AxisX.Title = "Год";
-            chartArea2.AxisY.Title = "% плохих дорог";
-            chartArea2.CursorX.IsUserEnabled = true;
-            chartArea2.CursorX.IsUserSelectionEnabled = true;
-            chartArea2.CursorY.IsUserEnabled = true;
-            chartArea2.Name = "ChartArea1";
-            this.chartRoads.ChartAreas.Add(chartArea2);
-            this.chartRoads.Dock = System.Windows.Forms.DockStyle.Top;
-            legend2.Name = "Legend1";
-            this.chartRoads.Legends.Add(legend2);
-            this.chartRoads.Location = new System.Drawing.Point(3, 387);
-            this.chartRoads.Name = "chartRoads";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartRoads.Series.Add(series2);
-            this.chartRoads.Size = new System.Drawing.Size(963, 342);
-            this.chartRoads.TabIndex = 7;
-            this.chartRoads.Text = "chart1";
+            this.btnAnalyze.Location = new System.Drawing.Point(277, 14);
+            this.btnAnalyze.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAnalyze.Name = "btnAnalyze";
+            this.btnAnalyze.Size = new System.Drawing.Size(120, 52);
+            this.btnAnalyze.TabIndex = 7;
+            this.btnAnalyze.Text = "Анализ субъектов ";
+            this.btnAnalyze.UseVisualStyleBackColor = true;
+            this.btnAnalyze.Click += new System.EventHandler(this.btnAnalyze_Click);
+            // 
+            // lblSubject
+            // 
+            this.lblSubject.AutoSize = true;
+            this.lblSubject.Location = new System.Drawing.Point(275, 78);
+            this.lblSubject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSubject.Name = "lblSubject";
+            this.lblSubject.Size = new System.Drawing.Size(123, 13);
+            this.lblSubject.TabIndex = 6;
+            this.lblSubject.Text = "Субъект для прогноза:";
+            // 
+            // comboSubjectForForecast
+            // 
+            this.comboSubjectForForecast.FormattingEnabled = true;
+            this.comboSubjectForForecast.Location = new System.Drawing.Point(401, 74);
+            this.comboSubjectForForecast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboSubjectForForecast.Name = "comboSubjectForForecast";
+            this.comboSubjectForForecast.Size = new System.Drawing.Size(121, 21);
+            this.comboSubjectForForecast.TabIndex = 5;
+            // 
+            // btnLoadRoads
+            // 
+            this.btnLoadRoads.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnLoadRoads.Location = new System.Drawing.Point(11, 14);
+            this.btnLoadRoads.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLoadRoads.Name = "btnLoadRoads";
+            this.btnLoadRoads.Size = new System.Drawing.Size(142, 52);
+            this.btnLoadRoads.TabIndex = 0;
+            this.btnLoadRoads.Text = "Загрузить данные о дорогах";
+            this.btnLoadRoads.UseVisualStyleBackColor = true;
+            this.btnLoadRoads.Click += new System.EventHandler(this.btnLoadRoads_Click);
+            // 
+            // btnPredictRoads
+            // 
+            this.btnPredictRoads.Location = new System.Drawing.Point(157, 14);
+            this.btnPredictRoads.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPredictRoads.Name = "btnPredictRoads";
+            this.btnPredictRoads.Size = new System.Drawing.Size(98, 52);
+            this.btnPredictRoads.TabIndex = 4;
+            this.btnPredictRoads.Text = "Рассчитать прогноз";
+            this.btnPredictRoads.UseVisualStyleBackColor = true;
+            this.btnPredictRoads.Click += new System.EventHandler(this.btnPredictRoads_Click);
+            // 
+            // lblRoadsN
+            // 
+            this.lblRoadsN.AutoSize = true;
+            this.lblRoadsN.Location = new System.Drawing.Point(8, 76);
+            this.lblRoadsN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRoadsN.Name = "lblRoadsN";
+            this.lblRoadsN.Size = new System.Drawing.Size(144, 13);
+            this.lblRoadsN.TabIndex = 2;
+            this.lblRoadsN.Text = "Период сглаживания (лет):";
+            // 
+            // txtRoadsN
+            // 
+            this.txtRoadsN.Location = new System.Drawing.Point(157, 74);
+            this.txtRoadsN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtRoadsN.Name = "txtRoadsN";
+            this.txtRoadsN.Size = new System.Drawing.Size(99, 20);
+            this.txtRoadsN.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(363, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(125, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Введите текущую цену:";
+            // 
+            // CurrentPriceInputBox
+            // 
+            this.CurrentPriceInputBox.Location = new System.Drawing.Point(366, 57);
+            this.CurrentPriceInputBox.Maximum = new decimal(new int[] {
+            -159383553,
+            46653770,
+            5421,
+            0});
+            this.CurrentPriceInputBox.Name = "CurrentPriceInputBox";
+            this.CurrentPriceInputBox.Size = new System.Drawing.Size(163, 20);
+            this.CurrentPriceInputBox.TabIndex = 7;
+            this.CurrentPriceInputBox.ValueChanged += new System.EventHandler(this.CurrentPriceInputBox_ValueChanged);
+            // 
+            // NewPriceOutputBox
+            // 
+            this.NewPriceOutputBox.Location = new System.Drawing.Point(366, 83);
+            this.NewPriceOutputBox.Name = "NewPriceOutputBox";
+            this.NewPriceOutputBox.Size = new System.Drawing.Size(162, 51);
+            this.NewPriceOutputBox.TabIndex = 8;
+            this.NewPriceOutputBox.Text = "";
+            // 
+            // Chart
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.Chart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.Chart.Legends.Add(legend3);
+            this.Chart.Location = new System.Drawing.Point(323, 155);
+            this.Chart.Name = "Chart";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.Chart.Series.Add(series3);
+            this.Chart.Size = new System.Drawing.Size(304, 296);
+            this.Chart.TabIndex = 9;
+            this.Chart.Text = "chart1";
+            // 
+            // dgvInf
+            // 
+            this.dgvInf.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInf.Location = new System.Drawing.Point(20, 160);
+            this.dgvInf.Name = "dgvInf";
+            this.dgvInf.Size = new System.Drawing.Size(280, 290);
+            this.dgvInf.TabIndex = 10;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 762);
+            this.ClientSize = new System.Drawing.Size(651, 495);
             this.Controls.Add(this.tabControl1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.Text = "Анализ социально-экономических показателей России";
             this.tabControl1.ResumeLayout(false);
             this.tabInflation.ResumeLayout(false);
             this.tabInflation.PerformLayout();
             this.tabRoads.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartRoads)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRoads)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRoads)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartRoads)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentPriceInputBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Chart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInf)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -304,7 +385,6 @@
         private System.Windows.Forms.Button btnPredictInflation;
         private System.Windows.Forms.TextBox txtInflationN;
         private System.Windows.Forms.Label lblInflationN;
-        private System.Windows.Forms.Label lblInflationTable;
         private System.Windows.Forms.Button btnLoadRoads;
         private System.Windows.Forms.Button btnPredictRoads;
         private System.Windows.Forms.TextBox txtRoadsN;
@@ -317,6 +397,11 @@
         private System.Windows.Forms.Label lblSubject;
         private System.Windows.Forms.ComboBox comboSubjectForForecast;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRoads;
+        private System.Windows.Forms.RichTextBox NewPriceOutputBox;
+        private System.Windows.Forms.NumericUpDown CurrentPriceInputBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dgvInf;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Chart;
     }
 }
 
