@@ -54,6 +54,7 @@
             this.Chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.NewPriceOutputBox = new System.Windows.Forms.RichTextBox();
             this.dgvInf = new System.Windows.Forms.DataGridView();
+            this.btnExport = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabInflation.SuspendLayout();
             this.tabRoads.SuspendLayout();
@@ -79,6 +80,7 @@
             // 
             // tabInflation
             // 
+            this.tabInflation.Controls.Add(this.btnExport);
             this.tabInflation.Controls.Add(this.dgvInf);
             this.tabInflation.Controls.Add(this.NewPriceOutputBox);
             this.tabInflation.Controls.Add(this.Chart1);
@@ -301,7 +303,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(373, 38);
+            this.label1.Location = new System.Drawing.Point(335, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(125, 13);
             this.label1.TabIndex = 6;
@@ -309,7 +311,7 @@
             // 
             // InputCurrentPriceBox
             // 
-            this.InputCurrentPriceBox.Location = new System.Drawing.Point(376, 57);
+            this.InputCurrentPriceBox.Location = new System.Drawing.Point(338, 57);
             this.InputCurrentPriceBox.Maximum = new decimal(new int[] {
             -159383553,
             46653770,
@@ -338,7 +340,7 @@
             // 
             // NewPriceOutputBox
             // 
-            this.NewPriceOutputBox.Location = new System.Drawing.Point(376, 97);
+            this.NewPriceOutputBox.Location = new System.Drawing.Point(338, 91);
             this.NewPriceOutputBox.Name = "NewPriceOutputBox";
             this.NewPriceOutputBox.Size = new System.Drawing.Size(167, 36);
             this.NewPriceOutputBox.TabIndex = 9;
@@ -351,6 +353,16 @@
             this.dgvInf.Name = "dgvInf";
             this.dgvInf.Size = new System.Drawing.Size(276, 294);
             this.dgvInf.TabIndex = 10;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(535, 46);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(88, 45);
+            this.btnExport.TabIndex = 11;
+            this.btnExport.Text = "Экспорт графика";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // MainForm
             // 
@@ -402,6 +414,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart1;
         private System.Windows.Forms.NumericUpDown InputCurrentPriceBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnExport;
     }
 }
 

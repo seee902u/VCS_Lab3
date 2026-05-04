@@ -191,7 +191,7 @@ namespace EconomicIndicatorsApp
             chartRoads.ChartAreas[0].AxisY.ScaleView.ZoomReset();
         }
 
-        //вкладка "ИНФЛЯЦИЯ" (сделает ника)
+        //вкладка "ИНФЛЯЦИЯ"
         private void btnLoadInflation_Click(object sender, EventArgs e)
         {
             try
@@ -248,6 +248,36 @@ namespace EconomicIndicatorsApp
             }
         }
 
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "PNG (*.png)|*.png|JPEG (*.jpg;*.jpeg)|*.jpg|Bitmap (*.bmp)|*.bmp|EMF (*.emf)|*.emf|TIFF (*.tiff)|*.tiff|GIF (*.gif)|*.gif";
+                sfd.FilterIndex = 1;
+                sfd.FileName = "График_инфляции";
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    // Определение формата по выбранному расширению
+                    ChartImageFormat format = ChartImageFormat.Png; // по умолчанию
+                    string ext = Path.GetExtension(sfd.FileName).ToLower();
+                    switch (ext)
+                    {
+                        case ".jpg":
+                        case ".jpeg": format = ChartImageFormat.Jpeg; break;
+                        case ".bmp": format = ChartImageFormat.Bmp; break;
+                        case ".emf": format = ChartImageFormat.Emf; break;
+                        case ".tiff": format = ChartImageFormat.Tiff; break;
+                        case ".gif": format = ChartImageFormat.Gif; break;
+                        default: format = ChartImageFormat.Png; break;
+                    }
+
+                    Chart1.SaveImage(sfd.FileName, format);
+                    MessageBox.Show("График сохранён.", "Готово", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
         // Отрисовка графика
         private void UpdateChart(double[] history, double[] forecast = null)
         {
@@ -275,7 +305,7 @@ namespace EconomicIndicatorsApp
             area.CursorY.SelectionColor = Color.LightGray;
 
             // Столбцы
-            var historySeries = new Series("История")
+            var historySeries = new Series("Годы")
             {
                 ChartType = SeriesChartType.Column,
                 Color = Color.SteelBlue
