@@ -207,6 +207,10 @@ namespace EconomicIndicatorsApp
 
                 DataTable dt = _excelService.ReadFirstSheet(fullPath);
                 dgvInf.DataSource = dt;
+
+                // Построение графика
+                double[] history = _dataProvider.ReadInflationRates();
+                UpdateChart(history);
             }
             catch (Exception ex)
             {
@@ -245,7 +249,7 @@ namespace EconomicIndicatorsApp
         }
 
         // Перерисовка графика
-        private void UpdateChart(double[] history, double[] forecast)
+        private void UpdateChart(double[] history, double[] forecast = null)
         {
             Chart1.Series.Clear();
             Chart1.ChartAreas[0].AxisX.Title = "Год";
@@ -260,22 +264,25 @@ namespace EconomicIndicatorsApp
             for (int i = 0; i < history.Length; i++)
                 historySeries.Points.AddXY(i + 1, history[i]);
 
-            // Серия прогноза
-            var forecastSeries = new Series("Прогноз")
-            {
-                ChartType = SeriesChartType.Line,
-                Color = Color.OrangeRed,
-                BorderWidth = 2
-            };
-            int startYear = history.Length; // Последний исторический год
-            for (int i = 0; i < forecast.Length; i++)
-                forecastSeries.Points.AddXY(startYear + i + 1, forecast[i]);
-
-            // Добавим точку-связку (последнее историческое значение, чтобы линия не висела в воздухе)
-            forecastSeries.Points.Insert(0, new DataPoint(history.Length, history.Last()));
-
             Chart1.Series.Add(historySeries);
-            Chart1.Series.Add(forecastSeries);
+
+            // Если есть прогноз – добавляем линию прогноза
+            if (forecast != null && forecast.Length > 0)
+            {
+                var forecastSeries = new Series("Прогноз")
+                {
+                    ChartType = SeriesChartType.Line,
+                    Color = Color.OrangeRed,
+                    BorderWidth = 2
+                };
+                int startYear = history.Length;
+                // Связка с последней исторической точкой
+                forecastSeries.Points.Add(new DataPoint(history.Length, history.Last()));
+                for (int i = 0; i < forecast.Length; i++)
+                    forecastSeries.Points.AddXY(startYear + i + 1, forecast[i]);
+
+                Chart1.Series.Add(forecastSeries);
+            }
         }
 
         // Изменение текущей цены – пересчёт будущей стоимости
