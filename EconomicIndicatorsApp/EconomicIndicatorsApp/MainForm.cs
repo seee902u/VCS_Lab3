@@ -30,7 +30,7 @@ namespace EconomicIndicatorsApp
             dgvRoads.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             // Путь к файлу с данными относительно папки программы
-            string dataPath = Path.Combine(Application.StartupPath, "inflation_data.xlsx");
+            string dataPath = Path.Combine(Application.StartupPath, "Data", "inflation_data.xlsx");
             _dataProvider = new InflationDataProvider(dataPath);
             _forecaster = new MovingAverageForecaster();
         }
