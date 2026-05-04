@@ -191,7 +191,7 @@ namespace EconomicIndicatorsApp
             chartRoads.ChartAreas[0].AxisY.ScaleView.ZoomReset();
         }
 
-        //вкладка "ИНФЛЯЦИЯ" (сделает ника)
+        //вкладка "ИНФЛЯЦИЯ"
         private void btnLoadInflation_Click(object sender, EventArgs e)
         {
             try
@@ -207,6 +207,10 @@ namespace EconomicIndicatorsApp
 
                 DataTable dt = _excelService.ReadFirstSheet(fullPath);
                 dgvInf.DataSource = dt;
+
+                // Построение графика
+                double[] history = _dataProvider.ReadInflationRates();
+                UpdateChart(history);
             }
             catch (Exception ex)
             {
@@ -244,38 +248,86 @@ namespace EconomicIndicatorsApp
             }
         }
 
-        // Перерисовка графика
-        private void UpdateChart(double[] history, double[] forecast)
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "PNG (*.png)|*.png|JPEG (*.jpg;*.jpeg)|*.jpg|Bitmap (*.bmp)|*.bmp|EMF (*.emf)|*.emf|TIFF (*.tiff)|*.tiff|GIF (*.gif)|*.gif";
+                sfd.FilterIndex = 1;
+                sfd.FileName = "График_инфляции";
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    // Определение формата по выбранному расширению
+                    ChartImageFormat format = ChartImageFormat.Png; // по умолчанию
+                    string ext = Path.GetExtension(sfd.FileName).ToLower();
+                    switch (ext)
+                    {
+                        case ".jpg":
+                        case ".jpeg": format = ChartImageFormat.Jpeg; break;
+                        case ".bmp": format = ChartImageFormat.Bmp; break;
+                        case ".emf": format = ChartImageFormat.Emf; break;
+                        case ".tiff": format = ChartImageFormat.Tiff; break;
+                        case ".gif": format = ChartImageFormat.Gif; break;
+                        default: format = ChartImageFormat.Png; break;
+                    }
+
+                    Chart1.SaveImage(sfd.FileName, format);
+                    MessageBox.Show("График сохранён.", "Готово", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        // Отрисовка графика
+        private void UpdateChart(double[] history, double[] forecast = null)
         {
             Chart1.Series.Clear();
-            Chart1.ChartAreas[0].AxisX.Title = "Год";
-            Chart1.ChartAreas[0].AxisY.Title = "Инфляция, %";
 
-            // Серия исторических данных
-            var historySeries = new Series("История")
+            var area = Chart1.ChartAreas[0];
+            area.AxisX.Title = "Год";
+            area.AxisY.Title = "Инфляция, %";
+
+            // Масштабирование по X и Y
+            area.AxisX.ScaleView.Zoomable = true;
+            area.AxisY.ScaleView.Zoomable = true;
+
+            // Полоса прокрутки при увеличении
+            area.AxisX.ScrollBar.IsPositionedInside = true;
+            area.AxisX.ScrollBar.Size = 15;
+
+            // Курсор для выделения мышью
+            area.CursorX.IsUserEnabled = true;
+            area.CursorX.IsUserSelectionEnabled = true;
+            area.CursorX.SelectionColor = Color.LightGray;
+
+            area.CursorY.IsUserEnabled = true;
+            area.CursorY.IsUserSelectionEnabled = true;
+            area.CursorY.SelectionColor = Color.LightGray;
+
+            // Столбцы
+            var historySeries = new Series("Годы")
             {
                 ChartType = SeriesChartType.Column,
                 Color = Color.SteelBlue
             };
             for (int i = 0; i < history.Length; i++)
                 historySeries.Points.AddXY(i + 1, history[i]);
-
-            // Серия прогноза
-            var forecastSeries = new Series("Прогноз")
-            {
-                ChartType = SeriesChartType.Line,
-                Color = Color.OrangeRed,
-                BorderWidth = 2
-            };
-            int startYear = history.Length; // Последний исторический год
-            for (int i = 0; i < forecast.Length; i++)
-                forecastSeries.Points.AddXY(startYear + i + 1, forecast[i]);
-
-            // Добавим точку-связку (последнее историческое значение, чтобы линия не висела в воздухе)
-            forecastSeries.Points.Insert(0, new DataPoint(history.Length, history.Last()));
-
             Chart1.Series.Add(historySeries);
-            Chart1.Series.Add(forecastSeries);
+
+            // Прогнозная линия
+            if (forecast != null && forecast.Length > 0)
+            {
+                var forecastSeries = new Series("Прогноз")
+                {
+                    ChartType = SeriesChartType.Line,
+                    Color = Color.OrangeRed,
+                    BorderWidth = 2
+                };
+                forecastSeries.Points.Add(new DataPoint(history.Length, history.Last()));
+                for (int i = 0; i < forecast.Length; i++)
+                    forecastSeries.Points.AddXY(history.Length + i + 1, forecast[i]);
+                Chart1.Series.Add(forecastSeries);
+            }
         }
 
         // Изменение текущей цены – пересчёт будущей стоимости
